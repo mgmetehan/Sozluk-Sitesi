@@ -6,13 +6,15 @@ import lombok.Data;
 @Data
 public class UserViewDto {
 
-    private final String userName;
+    private Long id;
+    private String userName;
 
-    public UserViewDto(String userName) {
+    public UserViewDto(Long id, String userName) {
+        this.id = id;
         this.userName = userName;
     }
 
     public static UserViewDto of(User user) {
-        return new UserViewDto(user.getUserName());
+        return new UserViewDto(user.getId(), user.getUserName());
     }
 }
