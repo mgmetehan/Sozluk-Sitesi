@@ -7,6 +7,7 @@ import com.Dona.SozlukSitesi.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -30,5 +31,10 @@ public class UserController {
         return ResponseEntity.ok(newUser);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserViewDto> getUserById(@PathParam("id") Long id) {
+        UserViewDto user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
 
 }
