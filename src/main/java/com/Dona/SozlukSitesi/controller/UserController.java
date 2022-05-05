@@ -1,17 +1,14 @@
 package com.Dona.SozlukSitesi.controller;
 
-import com.Dona.SozlukSitesi.dto.UserCreateDto;
-import com.Dona.SozlukSitesi.dto.UserUpdateDto;
-import com.Dona.SozlukSitesi.dto.UserUpdateViewDto;
-import com.Dona.SozlukSitesi.dto.UserViewDto;
-import com.Dona.SozlukSitesi.model.User;
+import com.Dona.SozlukSitesi.dtoUser.UserCreateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
+import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.service.UserService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -51,7 +48,24 @@ public class UserController {
     public ResponseEntity<UserUpdateViewDto> updateUser(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto){
         final UserUpdateViewDto user = userService.updateUser(id,userUpdateDto);
         return ResponseEntity.ok(user);
+
+      /*Farklı bir yol //Controller->public User updateOneUser
+
+        public User updateOneUser(Long userId, User newUser) {
+		Optional<User> user = userRepository.findById(userId);
+		if(user.isPresent()) {
+			User foundUser = user.get();
+			foundUser.setUserName(newUser.getUserName());
+			foundUser.setPassword(newUser.getPassword());
+			foundUser.setAvatar(newUser.getAvatar());
+			userRepository.save(foundUser);
+			return foundUser;
+		}else
+			return null;
+	}
+         */
     }
+
 
 
 }

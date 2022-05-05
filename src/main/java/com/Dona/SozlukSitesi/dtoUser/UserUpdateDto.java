@@ -1,4 +1,4 @@
-package com.Dona.SozlukSitesi.dto;
+package com.Dona.SozlukSitesi.dtoUser;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
 package com.Dona.SozlukSitesi.service;
 
-import com.Dona.SozlukSitesi.dto.UserCreateDto;
-import com.Dona.SozlukSitesi.dto.UserUpdateDto;
-import com.Dona.SozlukSitesi.dto.UserUpdateViewDto;
-import com.Dona.SozlukSitesi.dto.UserViewDto;
+import com.Dona.SozlukSitesi.dtoUser.UserCreateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
+import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 
 import java.util.List;
 
