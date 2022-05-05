@@ -1,6 +1,8 @@
 package com.Dona.SozlukSitesi.serviceImpl;
 
 import com.Dona.SozlukSitesi.dto.UserCreateDto;
+import com.Dona.SozlukSitesi.dto.UserUpdateDto;
+import com.Dona.SozlukSitesi.dto.UserUpdateViewDto;
 import com.Dona.SozlukSitesi.dto.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.User;
@@ -43,6 +45,18 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         final User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserUpdateViewDto updateUser(Long id, UserUpdateDto userUpdateDto) {
+        final User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
+
+        user.setUserName(userUpdateDto.getUserName());
+        user.setPassword(userUpdateDto.getPassword());
+
+        final User updateUser = userRepository.save(user);
+        return UserUpdateViewDto.of(updateUser);
+
     }
 
 

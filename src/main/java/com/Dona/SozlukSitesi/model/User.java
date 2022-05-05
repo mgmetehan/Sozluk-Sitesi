@@ -11,7 +11,6 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
@@ -30,5 +29,11 @@ public class User {
     public User(Long id, String userName) {
         this.id = id;
         this.userName = userName;
+    }
+
+    public User(Long id, String userName, String password) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
     }
 }

@@ -1,6 +1,8 @@
 package com.Dona.SozlukSitesi.controller;
 
 import com.Dona.SozlukSitesi.dto.UserCreateDto;
+import com.Dona.SozlukSitesi.dto.UserUpdateDto;
+import com.Dona.SozlukSitesi.dto.UserUpdateViewDto;
 import com.Dona.SozlukSitesi.dto.UserViewDto;
 import com.Dona.SozlukSitesi.model.User;
 import com.Dona.SozlukSitesi.service.UserService;
@@ -43,6 +45,12 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok(new GenericResponse("User Deleted"));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserUpdateViewDto> updateUser(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto){
+        final UserUpdateViewDto user = userService.updateUser(id,userUpdateDto);
+        return ResponseEntity.ok(user);
     }
 
 
