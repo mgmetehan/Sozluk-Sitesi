@@ -4,6 +4,8 @@ import com.Dona.SozlukSitesi.dto.UserCreateDto;
 import com.Dona.SozlukSitesi.dto.UserViewDto;
 import com.Dona.SozlukSitesi.model.User;
 import com.Dona.SozlukSitesi.service.UserService;
+import com.Dona.SozlukSitesi.shared.GenericResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +34,16 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserViewDto> getUserById(@PathParam("id") Long id) {
+    public ResponseEntity<UserViewDto> getUserById(@PathVariable("id") Long id) {
         UserViewDto user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok(new GenericResponse("User Deleted"));
+    }
+
 
 }

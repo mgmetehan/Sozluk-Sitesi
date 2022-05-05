@@ -12,4 +12,6 @@ public interface UserService {
     UserViewDto createUser(UserCreateDto newUser);
 
     UserViewDto getUserById(Long id);
+
+    void deleteUser(Long id);
 }
