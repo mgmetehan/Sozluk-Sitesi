@@ -3,6 +3,7 @@ package com.Dona.SozlukSitesi.controller;
 import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
 import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
 import com.Dona.SozlukSitesi.service.PostService;
+import com.Dona.SozlukSitesi.shared.GenericResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,16 @@ public class PostController {
         return ResponseEntity.ok(postService.createPost(newPost));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") Long id){
+        PostViewDto post = postService.getPostById(id);
+        return ResponseEntity.ok(post);
+    }
 
-}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable("id") Long id){
+        postService.deletePost(id);
+        return ResponseEntity.ok(new GenericResponse("Post Deleted"));
+    }
+
+    }

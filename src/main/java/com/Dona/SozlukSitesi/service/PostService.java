@@ -9,4 +9,8 @@ public interface PostService {
     List<PostViewDto> getAllPosts();
 
     PostViewDto createPost(PostCreateDto newPost);
+
+    PostViewDto getPostById(Long id);
+
+    void deletePost(Long id);
 }
