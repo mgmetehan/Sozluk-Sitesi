@@ -58,6 +58,4 @@ public class UserServiceImpl implements UserService {
         return UserUpdateViewDto.of(updateUser);
 
     }
-
-
 }

@@ -1,6 +1,7 @@
 package com.Dona.SozlukSitesi.controller;
 
 import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
+import com.Dona.SozlukSitesi.dtoPost.PostUpdateDto;
 import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
 import com.Dona.SozlukSitesi.service.PostService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
@@ -30,15 +31,22 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") Long id){
+    public ResponseEntity<PostViewDto> getPostById(@PathVariable("id") Long id) {
         PostViewDto post = postService.getPostById(id);
         return ResponseEntity.ok(post);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePost(@PathVariable("id") Long id){
+    public ResponseEntity<?> deletePost(@PathVariable("id") Long id) {
         postService.deletePost(id);
         return ResponseEntity.ok(new GenericResponse("Post Deleted"));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<PostViewDto> updatePost(@PathVariable("id") Long id, @RequestBody PostUpdateDto postUpdateDto) {
+        final PostViewDto post = postService.updatePost(id, postUpdateDto);
+        return ResponseEntity.ok(post);
     }
+
+
+}
