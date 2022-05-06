@@ -1,6 +1,5 @@
-package com.Dona.SozlukSitesi.dto;
+package com.Dona.SozlukSitesi.dtoUser;
 
-import com.Dona.SozlukSitesi.model.User;
 import lombok.Data;
 
 @Data
