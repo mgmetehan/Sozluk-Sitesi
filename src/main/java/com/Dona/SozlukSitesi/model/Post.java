@@ -1,5 +1,6 @@
 package com.Dona.SozlukSitesi.model;
 
+import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -16,15 +17,16 @@ public class Post {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     private String title;
+
     @Lob
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     private String text;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    @Temporal(TemporalType.DATE)
+    private Date createDate = new Date();
 }
