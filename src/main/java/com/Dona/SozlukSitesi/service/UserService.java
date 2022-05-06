@@ -1,8 +1,9 @@
 package com.Dona.SozlukSitesi.service;
 
-import com.Dona.SozlukSitesi.dto.UserCreateDto;
-import com.Dona.SozlukSitesi.dto.UserViewDto;
-import com.Dona.SozlukSitesi.model.User;
+import com.Dona.SozlukSitesi.dtoUser.UserCreateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateDto;
+import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
+import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface UserService {
     UserViewDto getUserById(Long id);
 
     void deleteUser(Long id);
+
+    UserUpdateViewDto updateUser(Long id, UserUpdateDto userUpdateDto);
 }
