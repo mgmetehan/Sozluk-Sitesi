@@ -1,6 +1,7 @@
 package com.Dona.SozlukSitesi.serviceImpl;
 
 import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
+import com.Dona.SozlukSitesi.dtoPost.PostUpdateDto;
 import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
 import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,5 +49,28 @@ public class PostServiceImpl implements PostService {
         Post post = postRepository.save(postSave);
 
         return PostViewDto.of(post);
+    }
+
+    @Override
+    public PostViewDto getPostById(Long id) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        Post post = optionalPost.orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        return PostViewDto.of(post);
+    }
+
+    @Override
+    public void deletePost(Long id) {
+        final Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        postRepository.deleteById(id);
+    }
+
+    @Override
+    public PostViewDto updatePost(Long id, PostUpdateDto postUpdateDto) {
+        final Post post = postRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        post.setTitle(postUpdateDto.getTitle());
+        post.setText(postUpdateDto.getText());
+        final Post updatePost = postRepository.save(post);
+
+        return PostViewDto.of(updatePost);
     }
 }
