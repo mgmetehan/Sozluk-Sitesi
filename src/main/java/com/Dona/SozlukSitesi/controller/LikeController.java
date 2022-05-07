@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/likes")
@@ -19,8 +20,8 @@ public class LikeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LikeViewDto>> getAllLikes() {
-        final List<LikeViewDto> likes = likeService.getAllLikes();
+    public ResponseEntity<List<LikeViewDto>> getAllLikes(@RequestParam Optional<Long> postId, @RequestParam Optional<Long> userId) {
+        final List<LikeViewDto> likes = likeService.getAllLikes(postId, userId);
         return ResponseEntity.ok(likes);
     }
 
@@ -30,13 +31,13 @@ public class LikeController {
     }
 
     @GetMapping("/{likeId}")
-    public ResponseEntity<LikeViewDto> getLikeById(@PathVariable("likeId") Long likeId){
-        LikeViewDto like=likeService.getLikeById(likeId);
+    public ResponseEntity<LikeViewDto> getLikeById(@PathVariable("likeId") Long likeId) {
+        LikeViewDto like = likeService.getLikeById(likeId);
         return ResponseEntity.ok(like);
     }
 
     @DeleteMapping("/{likeId}")
-    public ResponseEntity<?> deleteLike(@PathVariable("likeId") Long likeId){
+    public ResponseEntity<?> deleteLike(@PathVariable("likeId") Long likeId) {
         likeService.deleteLike(likeId);
         return ResponseEntity.ok(new GenericResponse("Like Deleted"));
     }

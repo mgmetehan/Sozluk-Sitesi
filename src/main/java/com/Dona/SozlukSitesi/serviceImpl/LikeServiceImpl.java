@@ -30,10 +30,17 @@ public class LikeServiceImpl implements LikeService {
         this.postService = postService;
     }
 
-
     @Override
-    public List<LikeViewDto> getAllLikes() {
-        return likeRepository.findAll().stream().map(LikeViewDto::of).collect(Collectors.toList());
+    public List<LikeViewDto> getAllLikes(Optional<Long> postId, Optional<Long> userId) {
+        List<Like> list;
+        if (postId.isPresent()) {//http://localhost:8088/likes?postId=2  kullanimi
+            list = likeRepository.findByPostId(postId.get());//bu postta atilan likeları getirir
+        } else if (userId.isPresent()) {//http://localhost:8088/likes?userId=2  kullanimi
+            list = likeRepository.findByUserId(userId.get());//bu userin attigi likeları getirir
+        } else {
+            list = likeRepository.findAll();
+        }
+        return list.stream().map(LikeViewDto::of).collect(Collectors.toList());
     }
 
     @Override
