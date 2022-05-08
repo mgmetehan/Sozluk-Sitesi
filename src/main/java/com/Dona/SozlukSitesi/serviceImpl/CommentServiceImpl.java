@@ -1,7 +1,13 @@
 package com.Dona.SozlukSitesi.serviceImpl;
 
+import com.Dona.SozlukSitesi.dtoComment.CommentCreateDto;
 import com.Dona.SozlukSitesi.dtoComment.CommentViewDto;
+import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.Comment;
+import com.Dona.SozlukSitesi.model.Post;
+import com.Dona.SozlukSitesi.model.User;
 import com.Dona.SozlukSitesi.repository.CommentRepository;
 import com.Dona.SozlukSitesi.service.CommentService;
 import com.Dona.SozlukSitesi.service.PostService;
@@ -35,5 +41,34 @@ public class CommentServiceImpl implements CommentService {
             list = commentRepository.findAll();
         }
         return list.stream().map(CommentViewDto::of).collect(Collectors.toList());
+    }
+
+    @Override
+    public CommentViewDto createComment(CommentCreateDto newComment) {
+        UserViewDto userViewDto = userService.getUserById(newComment.getUserId());
+        PostViewDto postViewDto = postService.getPostById(newComment.getPostId());
+        if (userViewDto == null || postViewDto == null) {
+            throw new NotFoundException("Not Found Exception");
+        }
+
+        User user = new User();
+        user.setId(userViewDto.getId());
+        Post post = new Post();
+        post.setId(postViewDto.getId());
+
+        Comment commentSave = new Comment();
+        commentSave.setUser(user);
+        commentSave.setPost(post);
+        commentSave.setText(newComment.getText());
+
+        Comment comment = commentRepository.save(commentSave);
+        return CommentViewDto.of(comment);
+    }
+
+    @Override
+    public CommentViewDto getCommentById(Long id) {
+        Optional<Comment> optionalComment = commentRepository.findById(id);
+        Comment comment = optionalComment.orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        return CommentViewDto.of(comment);
     }
 }

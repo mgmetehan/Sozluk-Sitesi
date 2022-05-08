@@ -1,24 +1,16 @@
 package com.Dona.SozlukSitesi.dtoComment;
 
-import com.Dona.SozlukSitesi.dtoLike.LikeViewDto;
 import com.Dona.SozlukSitesi.model.Comment;
 import lombok.Data;
-
 import java.util.Date;
 
 @Data
 public class CommentViewDto {
     private Long id;
-
     private Long postId;
-
     private Long userId;
-
     private String userName;
-
-
     private String text;
-
     private Date createDate;
 
     public CommentViewDto(Long id, Long postId, Long userId, String userName, String text, Date createDate) {
