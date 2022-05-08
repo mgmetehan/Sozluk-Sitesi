@@ -1,6 +1,7 @@
 package com.Dona.SozlukSitesi.serviceImpl;
 
 import com.Dona.SozlukSitesi.dtoComment.CommentCreateDto;
+import com.Dona.SozlukSitesi.dtoComment.CommentUpdateDto;
 import com.Dona.SozlukSitesi.dtoComment.CommentViewDto;
 import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
 import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
@@ -13,6 +14,7 @@ import com.Dona.SozlukSitesi.service.CommentService;
 import com.Dona.SozlukSitesi.service.PostService;
 import com.Dona.SozlukSitesi.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -71,4 +73,21 @@ public class CommentServiceImpl implements CommentService {
         Comment comment = optionalComment.orElseThrow(() -> new NotFoundException("Not Found Exception"));
         return CommentViewDto.of(comment);
     }
+
+    @Override
+    public void deleteComment(Long id) {
+        final Comment comment = commentRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        commentRepository.deleteById(id);
+    }
+
+    @Override
+    public CommentViewDto updateComment(Long id, CommentUpdateDto commentUpdateDto) {
+        final Comment comment = commentRepository.findById(id).orElseThrow(() -> new NotFoundException("Not Found Exception"));
+        comment.setText(commentUpdateDto.getText());
+        final Comment updateComment = commentRepository.save(comment);
+
+        return CommentViewDto.of(updateComment);
+    }
+
+
 }
