@@ -6,7 +6,9 @@ import lombok.Data;
 @Data
 public class LikeViewDto {
     private Long id;
+
     private Long userId;
+
     private Long postId;
 
     public LikeViewDto(Long id, Long userId, Long postId) {
@@ -18,5 +20,4 @@ public class LikeViewDto {
     public static LikeViewDto of(Like like) {
         return new LikeViewDto(like.getId(), like.getUser().getId(), like.getPost().getId());
     }
-
 }

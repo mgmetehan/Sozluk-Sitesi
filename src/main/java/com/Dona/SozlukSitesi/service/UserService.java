@@ -17,4 +17,6 @@ public interface UserService {
     void deleteUser(Long id);
 
     UserUpdateViewDto updateUser(Long id, UserUpdateDto userUpdateDto);
+
+    List<Object> getUserLikesActivity(Long userId);
 }

@@ -9,9 +9,13 @@ import java.util.Date;
 public class PostViewDto {
 
     private Long id;
+
     private Long userId;
+
     private String title;
+
     private String text;
+
     private Date createDate;
 
     public PostViewDto(Long id, Long userId, String title, String text, Date createDate) {

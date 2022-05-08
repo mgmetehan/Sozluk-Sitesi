@@ -6,6 +6,8 @@ import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
 import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.User;
+import com.Dona.SozlukSitesi.repository.LikeRepository;
+import com.Dona.SozlukSitesi.repository.PostRepository;
 import com.Dona.SozlukSitesi.repository.UserRepository;
 import com.Dona.SozlukSitesi.service.UserService;
 import org.springframework.stereotype.Service;
@@ -18,9 +20,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
+    private final LikeRepository likeRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PostRepository postRepository, LikeRepository likeRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
+        this.likeRepository = likeRepository;
     }
 
     @Override
@@ -57,5 +63,16 @@ public class UserServiceImpl implements UserService {
         final User updateUser = userRepository.save(user);
         return UserUpdateViewDto.of(updateUser);
 
+    }
+
+    @Override
+    public List<Object> getUserLikesActivity(Long userId) {
+        List<Long> postIds = postRepository.findTopByUserId(userId);
+        if (postIds.isEmpty()) {
+            throw new NotFoundException("Not Found Exception");
+        }
+        List<Object> likes = likeRepository.findUserLikesByPostId(postIds);
+
+        return likes;
     }
 }
