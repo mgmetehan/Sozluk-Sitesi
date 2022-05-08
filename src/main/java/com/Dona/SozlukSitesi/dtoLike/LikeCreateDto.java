@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class LikeCreateDto {
     private Long id;
+
     private Long userId;
+
     private Long postId;
 
     public LikeCreateDto(Long id, Long userId, Long postId) {

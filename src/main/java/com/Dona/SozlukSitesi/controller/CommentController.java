@@ -8,6 +8,7 @@ import com.Dona.SozlukSitesi.shared.GenericResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createComment(@RequestBody CommentCreateDto newComment) {
+    public ResponseEntity<?> createComment(@Valid @RequestBody CommentCreateDto newComment) {
         return ResponseEntity.ok(commentService.createComment(newComment));
     }
 
@@ -44,10 +45,8 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CommentViewDto> updateComment(@PathVariable("id") Long id, @RequestBody CommentUpdateDto commentUpdateDto) {
+    public ResponseEntity<CommentViewDto> updateComment(@PathVariable("id") Long id, @Valid @RequestBody CommentUpdateDto commentUpdateDto) {
         final CommentViewDto comment = commentService.updateComment(id, commentUpdateDto);
         return ResponseEntity.ok(comment);
     }
-
-
 }

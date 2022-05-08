@@ -8,6 +8,7 @@ import com.Dona.SozlukSitesi.shared.GenericResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createPost(@RequestBody PostCreateDto newPost) {
+    public ResponseEntity<?> createPost(@Valid @RequestBody PostCreateDto newPost) {
         return ResponseEntity.ok(postService.createPost(newPost));
     }
 
@@ -43,10 +44,8 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostViewDto> updatePost(@PathVariable("id") Long id, @RequestBody PostUpdateDto postUpdateDto) {
+    public ResponseEntity<PostViewDto> updatePost(@PathVariable("id") Long id, @Valid @RequestBody PostUpdateDto postUpdateDto) {
         final PostViewDto post = postService.updatePost(id, postUpdateDto);
         return ResponseEntity.ok(post);
     }
-
-
 }

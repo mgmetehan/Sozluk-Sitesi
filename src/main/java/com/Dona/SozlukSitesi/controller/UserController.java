@@ -9,6 +9,7 @@ import com.Dona.SozlukSitesi.shared.GenericResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody UserCreateDto newUser) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserCreateDto newUser) {
         userService.createUser(newUser);
         return ResponseEntity.ok(newUser);
     }
@@ -45,8 +46,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserUpdateViewDto> updateUser(@PathVariable("id") Long id, @RequestBody UserUpdateDto userUpdateDto){
-        final UserUpdateViewDto user = userService.updateUser(id,userUpdateDto);
+    public ResponseEntity<UserUpdateViewDto> updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserUpdateDto userUpdateDto) {
+        final UserUpdateViewDto user = userService.updateUser(id, userUpdateDto);
         return ResponseEntity.ok(user);
 
       /*Farklı bir yol //Controller->public User updateOneUser
@@ -66,6 +67,9 @@ public class UserController {
          */
     }
 
-
-
+    @GetMapping("/activity/{userId}")
+    public ResponseEntity<List<Object>> getUserLikesActivity(@PathVariable Long userId) {
+        final List<Object> users = userService.getUserLikesActivity(userId);
+        return ResponseEntity.ok(users);
+    }
 }

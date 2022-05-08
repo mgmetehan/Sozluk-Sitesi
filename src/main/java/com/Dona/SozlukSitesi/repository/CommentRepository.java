@@ -1,7 +1,6 @@
 package com.Dona.SozlukSitesi.repository;
 
 import com.Dona.SozlukSitesi.model.Comment;
-import com.Dona.SozlukSitesi.model.Like;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
