@@ -32,3 +32,7 @@ For building and running the application you need:
 ```
   http://localhost:8088
 ```
+
+### Tablo İlişkileri
+<img width="500" alt="tablo" src="https://user-images.githubusercontent.com/41691766/167361257-ef59fa3e-fbf3-4aaa-bfc4-86dd0ed0fdcf.png">
+
