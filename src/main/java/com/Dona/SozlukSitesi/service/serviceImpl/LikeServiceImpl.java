@@ -1,9 +1,9 @@
-package com.Dona.SozlukSitesi.serviceImpl;
+package com.Dona.SozlukSitesi.service.serviceImpl;
 
-import com.Dona.SozlukSitesi.dtoLike.LikeCreateDto;
-import com.Dona.SozlukSitesi.dtoLike.LikeViewDto;
-import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeViewDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.Like;
 import com.Dona.SozlukSitesi.model.Post;

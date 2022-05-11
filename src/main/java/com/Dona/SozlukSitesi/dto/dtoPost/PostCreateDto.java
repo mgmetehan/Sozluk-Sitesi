@@ -1,4 +1,4 @@
-package com.Dona.SozlukSitesi.dtoPost;
+package com.Dona.SozlukSitesi.dto.dtoPost;
 
 import lombok.Data;
 

@@ -1,10 +1,10 @@
-package com.Dona.SozlukSitesi.serviceImpl;
+package com.Dona.SozlukSitesi.service.serviceImpl;
 
-import com.Dona.SozlukSitesi.dtoComment.CommentCreateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentUpdateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentViewDto;
-import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentViewDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.Comment;
 import com.Dona.SozlukSitesi.model.Post;

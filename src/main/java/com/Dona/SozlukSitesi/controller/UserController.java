@@ -1,11 +1,12 @@
 package com.Dona.SozlukSitesi.controller;
 
-import com.Dona.SozlukSitesi.dtoUser.UserCreateDto;
-import com.Dona.SozlukSitesi.dtoUser.UserUpdateDto;
-import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserUpdateViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.service.UserService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody UserCreateDto newUser) {
         userService.createUser(newUser);
-        return ResponseEntity.ok(newUser);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

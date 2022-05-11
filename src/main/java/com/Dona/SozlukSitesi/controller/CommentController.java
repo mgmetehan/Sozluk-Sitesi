@@ -1,10 +1,11 @@
 package com.Dona.SozlukSitesi.controller;
 
-import com.Dona.SozlukSitesi.dtoComment.CommentCreateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentUpdateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentViewDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentViewDto;
 import com.Dona.SozlukSitesi.service.CommentService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<?> createComment(@Valid @RequestBody CommentCreateDto newComment) {
-        return ResponseEntity.ok(commentService.createComment(newComment));
+        return new ResponseEntity<>(commentService.createComment(newComment), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

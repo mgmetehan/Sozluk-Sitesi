@@ -1,8 +1,8 @@
 package com.Dona.SozlukSitesi.service;
 
-import com.Dona.SozlukSitesi.dtoComment.CommentCreateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentUpdateDto;
-import com.Dona.SozlukSitesi.dtoComment.CommentViewDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoComment.CommentViewDto;
 
 import java.util.List;
 import java.util.Optional;

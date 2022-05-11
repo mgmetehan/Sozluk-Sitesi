@@ -1,8 +1,8 @@
 package com.Dona.SozlukSitesi.service;
 
-import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostUpdateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostViewDto;
 
 import java.util.List;
 

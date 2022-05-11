@@ -1,9 +1,10 @@
 package com.Dona.SozlukSitesi.controller;
 
-import com.Dona.SozlukSitesi.dtoLike.LikeCreateDto;
-import com.Dona.SozlukSitesi.dtoLike.LikeViewDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeViewDto;
 import com.Dona.SozlukSitesi.service.LikeService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class LikeController {
 
     @PostMapping
     public ResponseEntity<?> createLike(@RequestBody LikeCreateDto likeCreateDto) {
-        return ResponseEntity.ok(likeService.createLike(likeCreateDto));
+        return new ResponseEntity<>(likeService.createLike(likeCreateDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{likeId}")

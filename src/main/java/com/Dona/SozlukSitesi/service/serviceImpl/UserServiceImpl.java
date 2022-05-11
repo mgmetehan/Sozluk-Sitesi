@@ -1,9 +1,9 @@
-package com.Dona.SozlukSitesi.serviceImpl;
+package com.Dona.SozlukSitesi.service.serviceImpl;
 
-import com.Dona.SozlukSitesi.dtoUser.UserCreateDto;
-import com.Dona.SozlukSitesi.dtoUser.UserUpdateDto;
-import com.Dona.SozlukSitesi.dtoUser.UserUpdateViewDto;
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserUpdateViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.User;
 import com.Dona.SozlukSitesi.repository.LikeRepository;

@@ -1,4 +1,4 @@
-package com.Dona.SozlukSitesi.dtoComment;
+package com.Dona.SozlukSitesi.dto.dtoComment;
 
 import com.Dona.SozlukSitesi.model.Comment;
 import lombok.Data;

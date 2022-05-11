@@ -1,7 +1,7 @@
 package com.Dona.SozlukSitesi.service;
 
-import com.Dona.SozlukSitesi.dtoLike.LikeCreateDto;
-import com.Dona.SozlukSitesi.dtoLike.LikeViewDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoLike.LikeViewDto;
 
 import java.util.List;
 import java.util.Optional;

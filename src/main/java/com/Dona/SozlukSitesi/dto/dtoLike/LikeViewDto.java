@@ -1,4 +1,4 @@
-package com.Dona.SozlukSitesi.dtoLike;
+package com.Dona.SozlukSitesi.dto.dtoLike;
 
 import com.Dona.SozlukSitesi.model.Like;
 import lombok.Data;

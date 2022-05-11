@@ -1,10 +1,11 @@
 package com.Dona.SozlukSitesi.controller;
 
-import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostUpdateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostViewDto;
 import com.Dona.SozlukSitesi.service.PostService;
 import com.Dona.SozlukSitesi.shared.GenericResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<?> createPost(@Valid @RequestBody PostCreateDto newPost) {
-        return ResponseEntity.ok(postService.createPost(newPost));
+        return new ResponseEntity<>(postService.createPost(newPost), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

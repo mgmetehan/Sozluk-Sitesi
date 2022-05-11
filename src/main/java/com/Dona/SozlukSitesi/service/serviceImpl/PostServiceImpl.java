@@ -1,9 +1,9 @@
-package com.Dona.SozlukSitesi.serviceImpl;
+package com.Dona.SozlukSitesi.service.serviceImpl;
 
-import com.Dona.SozlukSitesi.dtoPost.PostCreateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostUpdateDto;
-import com.Dona.SozlukSitesi.dtoPost.PostViewDto;
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostCreateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostUpdateDto;
+import com.Dona.SozlukSitesi.dto.dtoPost.PostViewDto;
+import com.Dona.SozlukSitesi.dto.dtoUser.UserViewDto;
 import com.Dona.SozlukSitesi.exception.NotFoundException;
 import com.Dona.SozlukSitesi.model.Post;
 import com.Dona.SozlukSitesi.model.User;
@@ -12,7 +12,6 @@ import com.Dona.SozlukSitesi.service.PostService;
 import com.Dona.SozlukSitesi.service.UserService;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -1,6 +1,5 @@
 package com.Dona.SozlukSitesi.model;
 
-import com.Dona.SozlukSitesi.dtoUser.UserViewDto;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
